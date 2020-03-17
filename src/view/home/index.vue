@@ -1,6 +1,19 @@
 <template>
     <div class="main"> 
-        首页
+        <div class="top">卡牌手遊 自助查詢平台</div>
+        <div class="title">遊戲選單</div>
+        <div class="content">
+            <Row>
+                <Col span="6" v-for="(item, index) in 20" :key="item">
+                    <div class="content-item">
+                        <div class="item-img">
+                            <img src="http://amazeui.shopxo.net/static/images/100.jpg"/>
+                        </div>
+                        <div class="content-item-title">【台港澳服】一拳超人：最強之男(限安卓)</div>
+                    </div>
+                </Col>
+            </Row>
+        </div>
     </div>
 </template>
 
@@ -8,18 +21,15 @@
 
 <script>
 
-    import mixins from '../../common/mixin'; 
-    import Footer from '../../component/footer';
+    import mixins from '../../common/mixin';
 
     export default {
         components: {
-            'Footer': Footer
+
         },
         mixins: [mixins],
-        data: () => ({ 
-            aaa: '1111',
-            wallet_account: '',
-            wallet: {}
+        data: () => ({
+
         }),
         created() {  
             
