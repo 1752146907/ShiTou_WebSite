@@ -1,0 +1,51 @@
+.main-header{
+    margin: 10px;
+    background: #b20004;
+    color: #ffffff;
+    padding: 20px 20px 8px 20px;
+    border-radius: 4px;
+}
+.main-header p{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.main-header .rmb{
+    font-size: 24px;
+    text-align: right;
+    margin-top: 10px;
+}
+.main-header .rmb span{
+    font-size: 14px;
+}
+.content{
+    background: #ffffff;
+    padding: 0px 10px 10px 10px;
+}
+.content h3{
+    padding-top: 10px;
+}
+.content-box{
+    display: flex; 
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid #fafafa;
+}
+.content-box-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.content-box-title{
+    flex: 1;
+    font-size: 18px;
+}
+.content-box-rate{
+    text-align: right;
+}
+.content-box-rate p{
+    color: #999;
+    font-size: 15px;
+}
