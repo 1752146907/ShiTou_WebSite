@@ -20,4 +20,4 @@ yarn-error.log*
 *.sln
 *.sw*
 
-*application.js
+*application-prod.js
