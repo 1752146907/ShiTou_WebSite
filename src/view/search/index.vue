@@ -47,12 +47,16 @@
                         NE252473-(S53)
                     </div>
                     <div class="return-content-right">
-                        <div class="item" v-for="(item, index) in 16" :key="index">
+                        <div class="item" v-for="item in 16" :key="index">
                             <img src="http://amazeui.shopxo.net/static/images/100.jpg"/>
                             <p>SSR阿修羅獨角仙】</p>
                         </div>
+                        <span v-for="(item, i) in 16" :key="index"  v-if="false">
+                            <storn v-if="i > 0">|</storn>SSR阿修羅獨角仙
+                        </span>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

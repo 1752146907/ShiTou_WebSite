@@ -161,3 +161,12 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+.return-content-right span{
+    font-size: 18px;
+    display: inline-block;
+    margin: 4px 0px;
+}
+.return-content-right storn{
+    display: inline-block;
+    margin: 0px 8px;
+}
