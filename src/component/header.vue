@@ -74,7 +74,7 @@
         position: absolute;
         font-size: 30px;
         top: 20px;
-        left: 20px;
+        left: 10px;
     }
     .menu-body{
 

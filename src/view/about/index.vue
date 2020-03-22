@@ -2,11 +2,11 @@
     <div class="main">
         <Header title="卡牌手遊 自助查詢平台"></Header>
         <div class="main-body">
-            <h2>联络方式</h2>
+            <h2>聯絡方式</h2>
             <div style="margin-bottom: 20px">
                 <Icon type="ios-call-outline" color="#32b4e6" size="70" />
             </div>
-            <p>客服：13800138000</p>
+            <p>LINE客服：stones1126</p>
         </div>
     </div>
 </template>
