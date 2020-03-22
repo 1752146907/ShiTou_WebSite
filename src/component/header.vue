@@ -1,44 +1,91 @@
 <template>
-    <div class="bar-header">
-        <div class="bar-box">
-            <van-icon class="bar-back" name="arrow-left" v-if="isHiddenArrowLeft" @click="handleBack" size="20" /> 
+    <div>
+        <div class="top">
+        <span class="top-back">
+            <Icon @click="isShow = !isShow" type="md-menu" />
+        </span>
             {{title}}
-            <span @click="handleRightText">{{rightText}}</span>
         </div>
+        <div class="menu" v-if="isShow">
+            <div class="menu-header">
+                <Icon class="menu-header-icon" @click="isShow = !isShow" type="md-close" />
+                遊戲選單
+            </div>
+            <div class="menu-body">
+                <p v-for="item in 10" :key="item">【台港澳服】一拳超人</p>
+                <p @click="handleAbout">關于我們</p>
+            </div>
+        </div>
+        <div v-if="isShow" @click="isShow = !isShow" class="masl"></div>
     </div>
 </template>
 
 <style scoped>
-    .bar-header{
-        height: 44px;
-        position: sticky;
+    .top{
+        background-color: #32b4e6;
+        height: 70px;
+        z-index: 3;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        position: fixed;
         left: 0px;
+        right: 0px;
+        top: 0px;
+        font-size: 30px;
+        line-height: 70px;
+        font-weight: bold;
+        color: #FFF;
+        text-align: center;
+    }
+    .top-back{
+        float: left;
+        margin-left: 10px;
+    }
+    .masl{
+        position: fixed;
         top: 0px;
         right: 0px;
-        line-height: 44px;
-        text-align: center;
-        font-size: 20px;
-        z-index: 99;
-        background: #F3F3F3;
-        border-bottom: 1px solid #E6E6E6;
+        bottom: 0px;
+        left: 0px;
+        background: #000000;
+        opacity: 0.6;
+        z-index: 998;
     }
-    .bar-header .bar-box{
-        height: 44px;
-        line-height: 44px;
-        font-size:17px;
-        font-weight:400;
-        color: #1A1A1A;
-    }
-    .bar-header .bar-back{
-        position: absolute;
-        top: 12px;
-        left: 16px;
-    }
-    .bar-header .bar-box span{
-        position: absolute;
+    .menu{
+        width: 300px;
+        position: fixed;
+        left: 0px;
         top: 0px;
-        right: 16px;
-        font-size: 15px;
+        background: #ffffff;
+        font-size: 19px;
+        z-index: 999;
+        height: 100vh;
+        overflow-y: scroll;
+    }
+    .menu-header{
+        background-color: #32b4e6;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: bold;
+        position: relative;
+    }
+    .menu-header-icon{
+        position: absolute;
+        font-size: 30px;
+        top: 20px;
+        left: 20px;
+    }
+    .menu-body{
+
+    }
+    .menu-body p{
+        color: #1e1e1e;
+        padding: 20px 10px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #e6e6e6;
+        box-shadow: 0px 1px 1px #FFF;
     }
 </style>
 
@@ -50,35 +97,22 @@
         },
         props: {
             title: {
-                required: false
-            },
-            rightText: {
-                required: false
-            },
-            isHiddenArrowLeft: {
-                required: false
+                required: true
             }
         },
         data: () => ({
-
+            isShow: false
         }),
         created () {
 
         },
         methods: {
-            handleBack: function () {
-                //返回上一层
-                // if (window.history.length <= 1) {
-                //     this.$router.push({path:'/'})
-                //     return false
-                // } else {
-                //     if(sessionStorage.getItem('url_from') && sessionStorage.getItem('url_from') != null){
-                //         this.$router.go(-1)
-                //     } else{
-                //         this.$router.push({path:'/'})
-                //     }
-                // }
-                this.$router.go(-1)
+            handleAbout: function () {
+                if(this.$route.path == '/about') {
+                    this.isShow = false
+                    return
+                }
+                this.$router.replace({path:'/about'})
             },
             handleRightText: function () {
                 this.$emit('handleRightText');

@@ -1,14 +1,6 @@
 <template>
     <div>
-        <van-tabbar v-model="active" @change="handleTabbar">
-            <van-tabbar-item icon="balance-o"
-                             replace
-                             to="/home/index/" >钱包</van-tabbar-item> 
-            <van-tabbar-item icon="user-o"
-                             replace
-                             to="/my/index/"
-                             info="" >我的</van-tabbar-item>
-        </van-tabbar>
+
     </div>
 </template>
 

@@ -1,0 +1,11 @@
+.main-body{
+    text-align: center;
+    margin-top: 150px;
+}
+.main-body h2{
+    font-size: 40px;
+    margin-bottom: 150px;
+}
+.main-body p{
+    font-size: 20px;
+}

@@ -1,9 +1,9 @@
 <template>
-    <div class="main"> 
-        <div class="top">卡牌手遊 自助查詢平台</div>
+    <div class="main">
+        <Header title="卡牌手遊 自助查詢平台"></Header>
         <div class="search">
             <div class="search-box">
-                <span v-for="(item, index) in 4" :key="item">
+                <span v-for="(item, index) in 4" :key="index">
                     <storn v-if="index > 0">+</storn>
                     【SSR疫苗人】
                 </span>
@@ -47,12 +47,12 @@
                         NE252473-(S53)
                     </div>
                     <div class="return-content-right">
-                        <div class="item" v-for="item in 16" :key="index">
+                        <div class="item" v-for="(item, index) in 16" :key="index">
                             <img src="http://amazeui.shopxo.net/static/images/100.jpg"/>
                             <p>SSR阿修羅獨角仙】</p>
                         </div>
-                        <span v-for="(item, i) in 16" :key="index"  v-if="false">
-                            <storn v-if="i > 0">|</storn>SSR阿修羅獨角仙
+                        <span v-for="(item, index) in 16" :key="index"  v-if="false">
+                            <storn v-if="index > 0">|</storn>SSR阿修羅獨角仙
                         </span>
                     </div>
                 </div>
@@ -67,10 +67,11 @@
 <script>
 
     import mixins from '../../common/mixin';
+    import Header from '../../component/header';
 
     export default {
         components: {
-
+            Header
         },
         mixins: [mixins],
         data: () => ({
