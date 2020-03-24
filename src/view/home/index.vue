@@ -1,6 +1,9 @@
 <template>
     <div class="main"> 
-        <div class="top">卡牌手遊 自助查詢平台</div>
+        <div class="top">
+            石頭網路 卡牌遊戲 自助查詢平台
+            <div class="top-number">8591商家編號:No.1139934</div>
+        </div>
         <div class="title">遊戲選單</div>
         <div class="content">
             <Row>

@@ -4,8 +4,32 @@
 }
 .main-body h2{
     font-size: 40px;
-    margin-bottom: 150px;
+}
+.main-body .logo{
+    display: block;
+    max-width: 1140px;
+    margin: auto;
 }
 .main-body p{
     font-size: 20px;
+}
+.main-body-box{
+    max-width: 1140px;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 40px;
+}
+.main-body-item{
+    width: 33%;
+    float: left;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.main-body-item h3{
+    font-size: 22px;
+    padding-left: 10px;
+}
+.main-body-item  p{
+    padding: 10px;
 }

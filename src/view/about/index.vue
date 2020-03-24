@@ -1,12 +1,23 @@
 <template>
     <div class="main">
-        <Header title="卡牌手遊 自助查詢平台"></Header>
+        <Header title="石頭網路 卡牌遊戲 自助查詢平台"></Header>
         <div class="main-body">
-            <h2>聯絡方式</h2>
-            <div style="margin-bottom: 20px">
-                <Icon type="ios-call-outline" color="#32b4e6" size="70" />
+            <h2>关于我们</h2>
+            <img src="./image/logo.jpeg" class="logo" alt="">
+            <div class="main-body-box">
+                <div class="main-body-item">
+                    <h3>介绍1</h3>
+                    <p>石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路石頭網路</p>
+                </div>
+                <div class="main-body-item">
+                    <h3>介绍2</h3>
+                    <p>卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲卡牌遊戲</p>
+                </div>
+                <div class="main-body-item">
+                    <h3>介绍3</h3>
+                    <p>自助查詢平台自助查詢平台自助查詢平台自助查詢平台自助查詢平台自助查詢平台自助查詢平台自助查詢平台自助查詢平台</p>
+                </div>
             </div>
-            <p>LINE客服：stones1126</p>
         </div>
     </div>
 </template>
