@@ -14,7 +14,7 @@
             </div>
             <div class="menu-body">
                 <p @click="handleIndex">返回首页</p>
-                <p v-for="item in 10" :key="item">【台港澳服】一拳超人</p>
+                <p v-for="item in list" :key="item.id" @click="handleCategory(item.id)">{{item.title}}</p>
                 <p @click="handleAbout">關于我們</p>
             </div>
         </div>
@@ -112,10 +112,11 @@
             }
         },
         data: () => ({
-            isShow: false
+            isShow: false,
+            list: []
         }),
-        created () {
-
+        mounted () {
+            this.list = JSON.parse(localStorage.getItem('token_key'))
         },
         methods: {
             handleIndex: function () {
@@ -127,6 +128,17 @@
                     return
                 }
                 this.$router.push({path:'/about'})
+            },
+            handleCategory: function (id) {
+                if(this.$route.path == '/search/index') {
+                    window.location.href = 'http://' + window.location.host +'/search/index?id=' + id
+                }
+                else {
+                    this.$router.push({
+                        path:'/search/index',
+                        query:{id: id}
+                    })
+                }
             },
             handleRightText: function () {
                 this.$emit('handleRightText');

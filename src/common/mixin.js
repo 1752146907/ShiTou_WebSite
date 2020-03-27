@@ -1,20 +1,20 @@
-import reqwest from 'reqwest'; 
-import application from './application';  
+import reqwest from 'reqwest';
+import application from './application';
 
 export default {
 	data () {
 		return {
-			
+
 		}
 	},
-	components: { 
-		
+	components: {
+
 	},
 	created () {
 
 	},
 	methods: {
-		request (config) {   
+		request (config) {
 			if (!config.url.startsWith('http')) {
 				config.url = application.host + config.url;
 			}
@@ -25,7 +25,7 @@ export default {
 			}
 			config.headers = config.headers ? Object.assign(config.headers, headers) : headers;
 			config.method = config.method ? config.method : 'POST';
-			
+
 			if (!config.url.startsWith('http')) {
 				config.url = this.host + config.url;
 			}
@@ -36,16 +36,10 @@ export default {
 				crossOrigin: true,
 				headers: config.headers,
 				data: config.data,
-				success: (response) => { 
+				success: (response) => {
 					config.success(response);
 				},
-				error: (response) => { console.log(JSON.parse(response.response).code)
-					if(JSON.parse(response.response).code == 488) {
-						alert(JSON.parse(response.response).msg)
-					}
-					else {
-						alert("服务器繁忙，请稍后重试")
-					}
+				error: (response) => {
 					config.error(response);
 				},
 				complete: (response) => {

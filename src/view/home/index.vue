@@ -7,13 +7,13 @@
         <div class="title">遊戲選單</div>
         <div class="content">
             <Row>
-                <Col span="6" v-for="(item, index) in 20" :key="item">
-                    <router-link to='/search/index'>
+                <Col span="6" v-for="(item, index) in category" :key="item.id">
+                    <router-link :to="'/search/index?id=' + item.id">
                         <div class="content-item">
                             <div class="item-img">
-                                <img src="http://amazeui.shopxo.net/static/images/100.jpg"/>
+                                <img :src="imageHost + item.image"/>
                             </div>
-                            <div class="content-item-title">【台港澳服】一拳超人：最強之男(限安卓)</div>
+                            <div class="content-item-title">{{item.title}}</div>
                         </div>
                     </router-link>
                 </Col>
@@ -27,6 +27,7 @@
 <script>
 
     import mixins from '../../common/mixin';
+    import application from '../../common/application';
 
     export default {
         components: {
@@ -34,26 +35,22 @@
         },
         mixins: [mixins],
         data: () => ({
-
+            imageHost: application.imageHost,
+            category:[]
         }),
-        created() {  
-            
+        created() {
+            this.handleCategory()
         },
         methods: {  
-            handleWallet: function () {
+            handleCategory: function () {
                 this.request({
-                    url: '/api/user/wallet-info',
+                    url: '/api/category',
                     method: 'POST',
-                    data: { 
-                        code: this.$route.query.code ? this.$route.query.code : this.$storage.getWalletCode()
+                    data: {
+
                     },
                     success: (response) => { 
-                         this.wallet = response;
-                         let total = 0;
-                         this.wallet.total = response.map((data) => {
-                            total += data.currency.rmb_price * data.balance
-                         })
-                         this.wallet.total = total
+                         this.category = response;
                     },
                     error: (response) => {
                         

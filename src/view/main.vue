@@ -18,13 +18,30 @@
 
         }),
         created () {
-            
+            this.handleLoad()
         },
         mounted () {
 
         },
         methods: {
+			handleLoad: function () {
+				this.request({
+					url: '/api/category',
+					method: 'POST',
+					data: {
 
+					},
+					success: (response) => {
+						localStorage.setItem('token_key', JSON.stringify(response));
+					},
+					error: (response) => {
+
+					},
+					complete: (response) => {
+
+					}
+				});
+			},
         }
     }
 </script>
