@@ -30,7 +30,7 @@
             <div class="return-tab" v-if="group.length > 0">
                 <span class="return-tab-item" :class="isItemTab ? 'on' : ''" @click="isItemTab = true">
                     <Icon type="ios-images-outline" />
-                    圖片顯示
+                    圖片顯示2
                 </span>
                 <span class="return-tab-item" :class="isItemTab ? '' : 'on'" @click="isItemTab = false">
                     <Icon type="ios-grid-outline" />
@@ -80,7 +80,7 @@
             card: {},
             total: 0,
             size: 80,
-            group: {}
+            group: []
         }),
         created() {  
             this.handleLoad()
