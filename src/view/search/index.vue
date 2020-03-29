@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="return" id="miao">
-            <div class="return-tab">
+            <div class="return-tab" v-if="group.length > 0">
                 <span class="return-tab-item" :class="isItemTab ? 'on' : ''" @click="isItemTab = true">
                     <Icon type="ios-images-outline" />
                     圖片顯示
@@ -134,7 +134,14 @@
                 this.key.map((data) => {
                     keyId.push(data.id)
                 })
-                console.log(keyId)
+                if(keyId.length == 0) {
+                    this.$Message.error({
+                        content: "搜尋不能爲空",
+                        duration: 3
+                    });
+
+                    return
+                }
 
                 this.request({
                     url: '/api/group',
