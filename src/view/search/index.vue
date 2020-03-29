@@ -87,7 +87,7 @@
         },
         methods: {
             handleBack0() {
-                this.isItemTab = false;
+                this.isItemTab = true;
                 this.key = [];
                 this.group = [];
                 this.handleLoad()
