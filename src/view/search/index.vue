@@ -17,18 +17,14 @@
             </div>
         </div>
         <div class="content">
-            <Row>
-                <Col span="6" v-for="(item, index) in card.data" :key="item.id + 'l'">
-                    <div class="content-item" @click="handleAdd(item, index)">
-                        <div class="item-img">
-                            <img :src="imageHost + item.image"/>
-                        </div>
-                        <div class="content-item-title">{{item.title}}</div>
-                        <div class="mask" v-if="item.active"></div>
-                        <Icon class="icon" v-if="item.active" size="56" type="md-checkmark-circle-outline" />
-                    </div>
-                </Col>
-            </Row>
+            <div v-for="(item, index) in card.data" :key="item.id + 'l'" class="content-item" @click="handleAdd(item, index)">
+                <div class="item-img">
+                    <img :src="imageHost + item.image"/>
+                </div>
+                <div class="content-item-title">{{item.title}}</div>
+                <div class="mask" v-if="item.active"></div>
+                <Icon class="icon" v-if="item.active" size="56" type="md-checkmark-circle-outline" />
+            </div>
         </div>
         <div class="return" id="miao">
             <div class="return-tab">
@@ -48,13 +44,15 @@
                     <!--</div>-->
                     <div class="return-content-right">
                         <div class="return-content-right-title">{{item.title}}</div>
-                        <div class="item" v-for="(cards, index) in item.cards" :key="index + 'z'" v-if="isItemTab">
-                            <img :src="imageHost + cards.image"/>
-                            <p>{{cards.title}}</p>
-                        </div>
-                        <span v-for="(cards, index) in item.cards" :key="index + 'q'"  v-if="!isItemTab">
+                        <div class="return-content-right-box">
+                            <div class="item" v-for="(cards, index) in item.cards" :key="index + 'z'" v-if="isItemTab">
+                                <img :src="imageHost + cards.image"/>
+                                <p>{{cards.title}}</p>
+                            </div>
+                            <span v-for="(cards, index) in item.cards" :key="index + 'q'"  v-if="!isItemTab">
                             <storn v-if="index > 0">|</storn>{{cards.title}}
                         </span>
+                        </div>
                     </div>
                 </div>
             </div>
