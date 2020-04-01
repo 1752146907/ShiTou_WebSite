@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="content">
-            <div v-for="(item, index) in card.data" :key="item.id + 'l'" class="content-item" @click="handleAdd(item, index)">
+            <div v-for="(item, index) in historyList" :key="item.id + 'l'" class="content-item" @click="handleAdd(item, index)">
                 <div class="item-img">
                     <img :src="imageHost + item.image"/>
                 </div>
@@ -26,6 +26,11 @@
                 <Icon class="icon" v-if="item.active" size="56" type="md-checkmark-circle-outline" />
             </div>
         </div>
+
+        <div class="search page">
+            <Page :total="total" :page-size="size" class-name="page-class" @on-change="handleChangePage" />
+        </div>
+
         <div class="return" id="miao">
             <div class="return-tab" v-if="group.length > 0">
                 <span class="return-tab-item" :class="isItemTab ? 'on' : ''" @click="isItemTab = true">
@@ -61,6 +66,35 @@
 </template>
 
 <style src="./index.css" scoped></style>
+<style>
+    .page-class a:hover{
+        color: #000000;
+    }
+    .page-class .ivu-page-item-active{
+        border-color: #000000;
+    }
+    .page-class .ivu-page-item-active a{
+        color: #000000;
+    }
+    .page-class .ivu-page-item:hover{
+        border-color: #000000;
+    }
+    .page-class .ivu-page-item:hover a{
+        color: #000000;
+    }
+    .page-class .ivu-page-item a:hover{
+        color: #000000;
+    }
+    .page-class .ivu-page-next:hover, .ivu-page-prev:hover{
+        border-color: #000000;
+    }
+    .page-class .ivu-page-next:hover a, .ivu-page-prev:hover a{
+        color: #000000;
+    }
+    .page-class .ivu-page-next a:hover, .ivu-page-prev a:hover{
+        color: #000000;
+    }
+</style>
 
 <script>
 
@@ -79,13 +113,17 @@
             imageHost: application.imageHost,
             card: {},
             total: 0,
-            size: 80,
-            group: []
+            size: 20,
+            group: [],
+            historyList: []
         }),
         created() {  
             this.handleLoad()
         },
         methods: {
+            handleChangePage(index) {
+                console.log(index)
+            },
             handleBack0() {
                 this.isItemTab = true;
                 this.key = [];
@@ -93,18 +131,17 @@
                 this.handleLoad()
             },
             handleAdd: function (id, index) {
-                if(this.card.data[index].active) {
-                    this.card.data[index].active = false;
+                if(this.historyList[index].active) {
+                    this.historyList[index].active = false;
                     this.key.map((data, i) => {
                         if(data.id == id.id) {
                             this.key.splice(i, 1)
                         }
                     })
                 } else{
-                    this.card.data[index].active = true;
+                    this.historyList[index].active = true;
                     this.key.push(id)
                 }
-                console.log( this.key)
             },
             handleLoad: function () {
                 this.request({
@@ -115,11 +152,13 @@
                         size: this.size
                     },
                     success: (response) => {
-                        this.card = response,
-                        this.card.data.map((data) => {
-                            data.active = false
+                        response.data.map((data) => {
+                            this.historyList.push(data)
                         })
-                        this.total = response.total
+                        this.historyList.map((data) => {
+                            data.active = false
+                        });
+                        this.total = response.total;
                     },
                     error: (response) => {
                         
@@ -150,7 +189,14 @@
                         id: keyId
                     },
                     success: (response) => {
-                        this.group = response
+                        this.group = response;
+
+                        if(this.group.length <= 0) {
+                            this.$Message.error({
+                                content: "暫無數據",
+                                duration: 3
+                            });
+                        }
                     },
                     error: (response) => {
 

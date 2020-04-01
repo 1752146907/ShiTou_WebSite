@@ -175,3 +175,8 @@
     display: inline-block;
     margin: 0px 8px;
 }
+
+.page{
+    padding: 50px 0px;
+    text-align: center;
+}
