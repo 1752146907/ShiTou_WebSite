@@ -28,7 +28,7 @@
         </div>
 
         <div class="search page">
-            <Page :total="total" :page-size="size" class-name="page-class" @on-change="handleChangePage" />
+            <Page :total="total" :page-size="40" class-name="page-class" @on-change="handleChangePage" />
         </div>
 
         <div class="return" id="miao">
@@ -113,7 +113,7 @@
             imageHost: application.imageHost,
             card: {},
             total: 0,
-            size: 20,
+            page: 1,
             group: [],
             historyList: []
         }),
@@ -122,6 +122,8 @@
         },
         methods: {
             handleChangePage(index) {
+                this.page = index;
+                this.handleLoad()
                 console.log(index)
             },
             handleBack0() {
@@ -149,12 +151,13 @@
                     method: 'GET',
                     data: {
                         id: this.$route.query.id,
-                        size: this.size
+                        page: this.page
                     },
                     success: (response) => {
-                        response.data.map((data) => {
-                            this.historyList.push(data)
-                        })
+                        // response.data.map((data) => {
+                        //     this.historyList.push(data)
+                        // })
+                        this.historyList = response.data;
                         this.historyList.map((data) => {
                             data.active = false
                         });
