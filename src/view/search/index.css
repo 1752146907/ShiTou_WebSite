@@ -2,6 +2,19 @@
     margin-bottom: 40px;
 }
 
+.scroll-top{
+    position: fixed;
+    right: 40px;
+    bottom: 10%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.scroll-top img{
+    width: 40px;
+    height: 40px;
+}
+
 .search{
     max-width: 1140px;
     padding: 100px 20px 0px 20px;

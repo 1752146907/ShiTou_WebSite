@@ -9,14 +9,11 @@
                 </span>
             </div>
             <div class="search-footer">
-                <a href="#miao">
-                    <span class="search-footer-item" @click="handleGroup">搜 尋</span>
-                </a>
-
+                <span class="search-footer-item" @click="handleGroup">搜 尋</span>
                 <span class="search-footer-item" @click="handleBack0">重 選</span>
             </div>
         </div>
-        <div class="content">
+        <div id="content" class="content">
             <div v-for="(item, index) in historyList" :key="item.id + 'l'" class="content-item" @click="handleAdd(item, index)">
                 <div class="item-img">
                     <img :src="imageHost + item.image"/>
@@ -31,7 +28,7 @@
             <Page :total="total" :page-size="40" class-name="page-class" @on-change="handleChangePage" />
         </div>
 
-        <div class="return" id="miao">
+        <div class="return">
             <div class="return-tab" v-if="group.length > 0">
                 <span class="return-tab-item" :class="isItemTab ? 'on' : ''" @click="isItemTab = true">
                     <Icon type="ios-images-outline" />
@@ -61,6 +58,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="scroll-top" @click="handleScrollTop">
+            <img src="../../image/push.png" alt="">
         </div>
     </div>
 </template>
@@ -117,14 +117,13 @@
             group: [],
             historyList: []
         }),
-        created() {  
+        created() {
             this.handleLoad()
         },
         methods: {
             handleChangePage(index) {
                 this.page = index;
                 this.handleLoad()
-                console.log(index)
             },
             handleBack0() {
                 this.isItemTab = true;
@@ -199,6 +198,13 @@
                                 content: "暫無數據",
                                 duration: 3
                             });
+                        } else{
+                            setTimeout(() => {
+                                let scroll_height = document.getElementById("content").offsetHeight + 268 + 150;
+                                document.documentElement.scrollTop = scroll_height;
+                                document.body.scrollTop = scroll_height;
+                                console.log(document.getElementById("content").offsetHeight);
+                            }, 100)
                         }
                     },
                     error: (response) => {
@@ -209,6 +215,10 @@
                     }
                 });
             },
+            handleScrollTop() {
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }
         }
     }
 </script>
